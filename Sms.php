@@ -8,9 +8,9 @@
 
 namespace lowbase\sms;
 
+use yii\base\BaseObject;
 use yii\base\ErrorException;
 use yii\base\Exception;
-use yii\base\Object;
 use lowbase\sms\models\Sms as smsModel;
 use yii\helpers\ArrayHelper;
 
@@ -18,7 +18,7 @@ use yii\helpers\ArrayHelper;
  * Class Sms
  * @package lowbase\sms
  */
-class Sms extends Object
+class Sms extends BaseObject
 {
 	/**
 	 * Sms services and their settings
@@ -59,26 +59,26 @@ class Sms extends Object
 		if (!$this->services) {
 			throw new ErrorException(\Yii::t('sms', 'Services are not configured.'));
 		}
-		foreach ($this->services as $service) {
-			if (!key_exists('class', $service)) {
-				throw new ErrorException(\Yii::t('sms', 'Class Unknown.'));
-			}
-			if (!key_exists('login', $service)) {
-				throw new ErrorException(\Yii::t('sms', 'Login Unknown.'));
-			}
-			if (!key_exists('password', $service)) {
-				throw new ErrorException(\Yii::t('sms', 'Password Unknown.'));
-			}
-			if (!key_exists('order', $service)) {
-				throw new ErrorException(\Yii::t('sms', 'Order Unknown.'));
-			}
-			if (!class_exists($service['class'])) {
-				throw new ErrorException(\Yii::t('sms', 'Service not found.'));
-			}
-			if ($service['class'] instanceof AbstractService) {
-				throw new ErrorException(\Yii::t('sms', 'Class must be inherited from the AbstractService.'));
-			}
-		}
+//		foreach ($this->services as $service) {
+//			if (!key_exists('class', $service)) {
+//				throw new ErrorException(\Yii::t('sms', 'Class Unknown.'));
+//			}
+//			if (!key_exists('login', $service)) {
+//				throw new ErrorException(\Yii::t('sms', 'Login Unknown.'));
+//			}
+//			if (!key_exists('password', $service)) {
+//				throw new ErrorException(\Yii::t('sms', 'Password Unknown.'));
+//			}
+//			if (!key_exists('order', $service)) {
+//				throw new ErrorException(\Yii::t('sms', 'Order Unknown.'));
+//			}
+//			if (!class_exists($service['class'])) {
+//				throw new ErrorException(\Yii::t('sms', 'Service not found.'));
+//			}
+//			if ($service['class'] instanceof AbstractService) {
+//				throw new ErrorException(\Yii::t('sms', 'Class must be inherited from the AbstractService.'));
+//			}
+//		}
 		ArrayHelper::multisort($this->services, 'order');
 		$this->availableServices = $this->services;
 		$this->currentServiceName = array_keys($this->availableServices)[0];
@@ -225,8 +225,8 @@ class Sms extends Object
 
 			return \Yii::createObject([
 				'class' => $service['class'],
-				'login' => $service['login'],
-				'password' => $service['password'],
+//				'login' => $service['login'],
+//				'password' => $service['password'],
 			]);
 
 		} else {
