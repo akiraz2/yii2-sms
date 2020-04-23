@@ -16,9 +16,8 @@ use yii\base\BaseObject;
  */
 abstract class AbstractService extends BaseObject
 {
-	public $login;
-	public $password;
-
+	public $credentials;
+    public $test = false;
 	/**
 	 * Send Request
 	 *

@@ -135,7 +135,7 @@ class Sms extends BaseObject
 				if (isset($result['id'])) {
 					$model->provider_sms_id = $result['id'];
 				}
-				$model->save();
+				$model->save(false);
 			}
 
 			unset($this->availableServices[$this->currentServiceName]);
@@ -225,8 +225,8 @@ class Sms extends BaseObject
 
 			return \Yii::createObject([
 				'class' => $service['class'],
-//				'login' => $service['login'],
-//				'password' => $service['password'],
+				'credentials' => $service['credentials'],
+				'test' => $service['test'] ?? false,
 			]);
 
 		} else {
