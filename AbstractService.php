@@ -66,4 +66,10 @@ abstract class AbstractService extends BaseObject
 	 * @return mixed
 	 */
 	abstract public function getBalance($options = []);
+
+    /**
+     * @param $postData
+     * @return mixed
+     */
+	abstract public function handleWebhook(array $postData, callable $process);
 }

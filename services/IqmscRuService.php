@@ -126,4 +126,8 @@ class IqmscRuService extends AbstractService
 		return false;
 	}
 
+    public function handleWebhook($post, callable $process)
+    {
+
+    }
 }

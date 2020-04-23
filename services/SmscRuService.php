@@ -130,4 +130,9 @@ class SmscRuService extends AbstractService
 	}
 
 
+    public function handleWebhook($post, callable $process)
+    {
+
+    }
+
 }

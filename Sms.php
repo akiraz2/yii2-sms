@@ -269,4 +269,13 @@ class Sms extends BaseObject
 		$this->cascade = $cascade;
 	}
 
+    /**
+     * @param $post
+     * @return mixed
+     */
+	public function handleWebhook($post, callable $process)
+    {
+        $result = $this->currentService->handleWebhook($post, $process);
+        return $result;
+    }
 }
